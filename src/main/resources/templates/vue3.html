@@ -1,0 +1,67 @@
+    <!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vue.js 합산 프로그램</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    </head>
+    <body>
+    <div id="app">
+        <h2>숫자 합산 프로그램</h2>
+        <label>숫자 1: </label>
+        <input type="number" v-model.number="number1">
+
+        <label>숫자 2: </label>
+        <input type="number" v-model.number="number2">
+
+        <label>짝/홀수: </label>
+        <input type="number" v-model.number="number3">
+
+        <label>양/음수: </label>
+        <input type="number" v-model.number="number4">
+
+        <h3>합계: {{ sum }}</h3>
+        <h3>짝/홀수여부: {{ oddYn }}</h3>
+        <h3>양/음수여부: {{ plusYn }}</h3>
+    </div>
+
+    <script>
+   new Vue({
+     el: '#app',
+     data: {
+       number1: 0,
+       number2: 0,
+       number3: 0,
+       number4: 0,
+       oddYn1:"",
+       plusYn1:""
+     },
+     computed: {
+       sum() {
+         return this.number1 + this.number2;
+       },
+       oddYn() {
+         if(this.number3%2==0){
+            this.oddYn1="짝수";
+         }
+         else{
+            this.oddYn1="홀수";
+         }
+         return this.oddYn1;
+       },
+       plusYn() {
+         if(this.number4>0){
+            this.plusYn1="양수";
+         }
+         else{
+            this.plusYn1="음수";
+         }
+         return this.plusYn1;
+       }
+     }
+   });
+ </script>
+    </body>
+    </html>
+

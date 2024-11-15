@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vue.js Counter Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+</head>
+<body>
+<div id="app">
+    <p>{{ sum }}</p>
+    <p>{{ odd }}</p>
+    <p>{{ arrSum }}</p>
+    <button @click="incrementCounter">Click me</button><br>
+    <button @click="fn_abc1">Click me1</button><br>
+    <button @click="fn_abc2">Click me2</button><br>
+</div>
+
+<script>
+var app = new Vue({
+   el: '#app',
+   data: {
+       d1 : 3,
+       d2 : 4,
+       sum : 0,
+       d3 : 7,
+       odd : "",
+       de1 : [1,2,3],
+       arrSum : 0
+   },
+   methods: {
+       incrementCounter: function() {
+           this.sum = this.d1 + this.d2;
+       },
+       fn_abc1: function() {
+           if(this.d3%2 == 0){
+               this.odd = "짝수입니다.";
+           }
+           else {
+               this.odd = "홀수입니다.";
+           }
+       },
+       fn_abc2: function() {
+           this.arrSum = this.de1[0] +this.de1[1] + this.de1[2];
+       }
+   }
+});
+</script>
+</body>
+</html>
+

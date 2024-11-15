@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js 합산 프로그램</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+<div id="app">
+    <h2>숫자 합산 프로그램</h2>
+    <label>숫자 1: </label>
+    <input type="number" v-model.number="number1">
+
+    <label>숫자 2: </label>
+    <input type="number" v-model.number="number2">
+
+    <h3>합계: {{ sum }}</h3>
+</div>
+
+<script>
+    new Vue({
+      el: '#app',
+      data: {
+        number1: 0,
+        number2: 0
+      },
+      computed: {
+        sum() {
+          return this.number1 + this.number2;
+        }
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<head>
+    <title>Vue.js 예제</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+</head>
+
+
+<template>
+    <div id="app">
+        <h1>두 숫자 더하기 프로그램</h1>
+        <input v-model.number="num1" type="number" placeholder="첫 번째 숫자" />
+        <input v-model.number="num2" type="number" placeholder="두 번째 숫자" />
+        <input v-model.number="num3" type="number" placeholder="홀수/짝수 찾기" />
+        <button @click="calculateSum">더하기</button>
+        <button @click="findOdd">홀/짝</button>
+        <p v-if="result !== null">결과: {{ result.sum }}</p>
+        <p v-if="result1 !== null">결과1: {{ result.oddYn }}</p>
+    </div>
+</template>
+
+
+
+<script>
+
+export default {
+  data() {
+    return {
+      num1: 0,
+      num2: 0,
+      result: null
+    };
+  },
+  methods: {
+    async calculateSum() {
+      try {
+          var num = {
+            num1: this.num1,
+            num2: this.num2,
+            num3: this.num3
+          };
+          const response = await fetch('http://localhost:8080/api/sum', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(num)
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          this.result = data
+        } else {
+          console.error("서버 응답 오류:", response.status);
+        }
+      } catch (error) {
+        console.error("오류 발생:", error);
+      }
+    },
+  },
+};
+
+</script>
