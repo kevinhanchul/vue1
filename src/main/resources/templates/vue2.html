@@ -9,13 +9,23 @@
 <body>
 <div id="app">
     <h2>숫자 합산 프로그램</h2>
-    <label>숫자 1: </label>
-    <input type="number" v-model.number="number1">
+    <label>1: </label>
+    <input type="number" v-model.number="number1" value="10"><br>
 
-    <label>숫자 2: </label>
-    <input type="number" v-model.number="number2">
+    <label>2: </label>
+    <input type="number" v-model.number="number2" value="9"><br>
 
-    <h3>합계: {{ sum }}</h3>
+    <label>3: </label>
+    <input type="number" v-model.number="number3" value="8"><br>
+
+    <label>4: </label>
+    <input type="number" v-model.number="number4" value="1"><br>
+
+    <button @click="fn_abc2">Click me2</button><br>
+
+    <h3>합계: {{ sum1 }}</h3>
+
+    <h3>1핀: {{ set1 }}</h3>
 </div>
 
 <script>
@@ -23,11 +33,26 @@
       el: '#app',
       data: {
         number1: 0,
-        number2: 0
+        number2: 0,
+        number3: 0,
+        number4: 0,
+        sum1: 0,
+        num:[],  //배열을 이렇게 선언을 해도 됨
+        pin1:0
       },
-      computed: {
-        sum() {
-          return this.number1 + this.number2;
+      methods: {
+        fn_abc2: function() {
+          this.sum1 = this.number1 + this.number2;
+          this.num[0]=this.number1;
+          this.num[1]=this.number2;
+          this.num[2]=this.number3;
+          this.num[3]=this.number4;
+          for(var i=0;i<4;i++){
+            this.sum1 += this.num[i];
+          }
+          if(this.sum1[0] == 10){
+            this.pin1 = this.sum1[0] + this.sum1[1];
+          }
         }
       }
     });

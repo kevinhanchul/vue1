@@ -20,6 +20,13 @@ public class TotController {
         return mav;
     }
 
+    @GetMapping("/vue2")
+    private ModelAndView vue2() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("vue2");
+        return mav;
+    }
+
     @GetMapping("/sum")
     private ModelAndView sum() {
         ModelAndView mav = new ModelAndView();
